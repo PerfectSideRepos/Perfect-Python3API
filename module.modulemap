@@ -1,0 +1,4 @@
+module PerfectPython3API [system] {
+  header "python3x.h"
+  export *
+}
