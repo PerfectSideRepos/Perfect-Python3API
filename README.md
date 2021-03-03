@@ -23,7 +23,7 @@
 
 <p align="center">
     <a href="https://developer.apple.com/swift/" target="_blank">
-        <img src="https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat" alt="Swift 4.2">
+        <img src="https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat" alt="Swift 5.3>
     </a>
     <a href="https://developer.apple.com/swift/" target="_blank">
         <img src="https://img.shields.io/badge/Platforms-OS%20X%20%7C%20Linux%20-lightgray.svg?style=flat" alt="Platforms OS X | Linux">
@@ -82,5 +82,23 @@ Verification:
 $ pkg-config python-3.5 --cflags --libs
 ```
 
+### Note for macOS
+`sudo vi /usr/local/lib/pkgconfig/python3.pc`
+
+```
+# See: man pkg-config
+prefix=/usr/local/opt/python@3.8/Frameworks/Python.framework/Versions/3.8
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Python
+Description: Build a C extension for Python
+Requires:
+Version: 3.8
+Libs.private: -lintl -ldl   -framework CoreFoundation
+Libs: -L${libdir} # <------------------------- Fix this! originally it looks empty.
+Cflags: -I${includedir}/python3.8
+```
 ## Further Information
 For more information on the Perfect project, please visit [perfect.org](http://perfect.org).

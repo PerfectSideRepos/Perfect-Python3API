@@ -1,4 +1,5 @@
 module PerfectPython3API [system] {
-  header "python3x.h"
+  header "python3api.h"
+  link "python3.8"
   export *
 }
